@@ -41,10 +41,12 @@ public class Fc5ConvertTest {
     @Test
     @Launch(args = { "obsidian", "--help" })
     void testObsidianCommandHelp(LaunchResult result) {
-        System.out.println(result.getOutputStream().stream().collect(Collectors.joining("\n")));
+        String out = result.getOutputStream().stream().collect(Collectors.joining("\n"));
+        System.out.println(out);
         Assertions.assertTrue(result.getOutputStream().stream()
-                .anyMatch(x -> x.startsWith("Usage: fc5-convert obsidian [-hvV] -o=<outputPath> [<input>...]")),
-                "Result should contain the CLI help message. Found: " + result);
+                .anyMatch(x -> x.startsWith(
+                        "Usage: fc5-convert obsidian [-hvV] -o=<outputPath> [<input>...]")),
+                "Result should contain the CLI help message. Found: " + out);
     }
 
     @Test
@@ -52,7 +54,8 @@ public class Fc5ConvertTest {
     void testTransformCommandHelp(LaunchResult result) {
         System.out.println(result.getOutputStream().stream().collect(Collectors.joining("\n")));
         Assertions.assertTrue(result.getOutputStream().stream()
-                .anyMatch(x -> x.startsWith("Usage: fc5-convert transform [-hvV] -o=<outputPath> [-t=<xsltFile>]")),
+                .anyMatch(x -> x.startsWith(
+                        "Usage: fc5-convert transform [-hvV] -o=<outputPath> [-t=<xsltFile>]")),
                 "Result should contain the CLI help message. Found: " + result);
     }
 
@@ -62,7 +65,8 @@ public class Fc5ConvertTest {
         String stream = result.getOutputStream().stream().collect(Collectors.joining("\n"));
         System.out.println(stream);
         Assertions.assertTrue(result.getOutputStream().stream()
-                .anyMatch(x -> x.startsWith("Usage: fc5-convert validate [-hvV] [--collection | [--compendium] |")),
+                .anyMatch(x -> x.startsWith(
+                        "Usage: fc5-convert validate [-hvV] [--collection | [--compendium] |")),
                 "Result should contain the CLI help message. Found: " + stream);
     }
 

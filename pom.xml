@@ -117,7 +117,6 @@
                     <systemPropertyVariables>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
                         <maven.home>${maven.home}</maven.home>
-                        <quarkus.log.level>INFO</quarkus.log.level>
                     </systemPropertyVariables>
                 </configuration>
             </plugin>
